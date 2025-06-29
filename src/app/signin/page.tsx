@@ -35,8 +35,12 @@ export default function SignIn() {
       } else {
         router.push("/dashboard");
       }
-    } catch (err: any) {
-      setError(err.message || "An unexpected error occurred.");
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unexpected error occurred.");
+      }
     } finally {
       setLoading(false);
     }
@@ -96,7 +100,7 @@ export default function SignIn() {
             {error && <div className="text-red-500 text-sm text-center mt-2">{error}</div>}
           </form>
           <div className="text-center mt-4 text-sm" style={{ color: "var(--muted-foreground)" }}>
-            Don't have an account? <Link href="/signup" className="text-[var(--primary)] font-semibold hover:underline">Sign up</Link>
+            Don&apos;t have an account? <Link href="/signup" className="text-[var(--primary)] font-semibold hover:underline">Sign up</Link>
           </div>
         </div>
       </main>

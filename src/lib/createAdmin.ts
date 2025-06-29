@@ -34,7 +34,7 @@ async function ensureAdminUser() {
   if (adminUser) {
     // User exists, update password
     console.log('Admin user found. Updating password...');
-    const { data, error: updateError } = await supabase.auth.admin.updateUserById(
+    const { error: updateError } = await supabase.auth.admin.updateUserById(
       adminUser.id,
       { password: adminPassword }
     );
@@ -47,7 +47,7 @@ async function ensureAdminUser() {
   } else {
     // User does not exist, create it
     console.log('Admin user not found. Creating new admin user...');
-    const { data, error: createError } = await supabase.auth.admin.createUser({
+    const { error: createError } = await supabase.auth.admin.createUser({
       email: adminEmail,
       password: adminPassword,
       email_confirm: true,

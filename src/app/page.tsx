@@ -1,5 +1,5 @@
 "use client";
-import { useTheme } from "./theme-provider";
+// import { useTheme } from "./theme-provider";
 import { Button } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import AppHeader from "./components/AppHeader";
@@ -9,14 +9,7 @@ import linkedinIcon from "./assets/icons8-linkedin-48.png";
 import twitterIcon from "./assets/icons8-twitter-48.png";
 import instagramIcon from "./assets/icons8-instagram-48.png";
 
-function ThemeToggle() {
-  const { theme, toggle } = useTheme();
-  return (
-    <Button onClick={toggle} color={theme === "dark" ? "primary" : "default"} variant="flat">
-      {theme === "dark" ? "🌙 Dark" : "☀️ Light"}
-    </Button>
-  );
-}
+// ThemeToggle is not used and has been removed to fix lint error.
 
 function useScrollAnimation() {
   useEffect(() => {
@@ -62,13 +55,17 @@ function useScrollAnimation() {
 
 export default function Home() {
   useScrollAnimation();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
   const supabase = createClient();
 
   useEffect(() => {
     async function getUser() {
       const { data } = await supabase.auth.getUser();
-      setUser(data.user);
+      if (data.user) {
+        setUser({ id: data.user.id, email: data.user.email ?? "" });
+      } else {
+        setUser(null);
+      }
     }
     getUser();
   }, [supabase.auth]);
@@ -170,7 +167,7 @@ export default function Home() {
         <div className="w-full mb-8">
           <h2 className="text-2xl font-bold text-center mb-2" style={{ color: "var(--primary)" }}>Among the Few Things We Offer</h2>
           <p className="text-center text-lg max-w-3xl mx-auto mb-4" style={{ color: "var(--muted-foreground)" }}>
-            In today's digital landscape, over 70% of companies struggle to fully leverage their data and AI potential, missing out on transformative growth and efficiency. At Zentara, we help you break through these barriers—revolutionizing your operations with cutting-edge automation, analytics, and cloud solutions. The services below are just a glimpse of what we can do. Ready to outperform your competition and future-proof your business? <span className="font-semibold text-[var(--primary)]">Contact us today</span> and discover how we can unlock your organization's true potential.
+            In today&apos;s digital landscape, over 70% of companies struggle to fully leverage their data and AI potential, missing out on transformative growth and efficiency. At Zentara, we help you break through these barriers—revolutionizing your operations with cutting-edge automation, analytics, and cloud solutions. The services below are just a glimpse of what we can do. Ready to outperform your competition and future-proof your business? <span className="font-semibold text-[var(--primary)]">Contact us today</span> and discover how we can unlock your organization&apos;s true potential.
           </p>
         </div>
         {[
@@ -205,7 +202,7 @@ export default function Home() {
         <div className="flex flex-wrap justify-center gap-10">
           {/* CEO */}
           <div className="flex flex-col items-center text-center max-w-xs bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 shadow-md workflow-glow">
-            <img src="/public/ceo.jpg" alt="CEO" className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
+            <Image src="/public/ceo.jpg" alt="CEO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
             <h4 className="text-xl font-semibold mb-1" style={{ color: "var(--foreground)" }}>Seth Situma</h4>
             <span className="text-sm mb-2" style={{ color: "var(--muted-foreground)" }}>Chief Executive Officer</span>
             <p className="text-sm mb-3" style={{ color: "var(--muted-foreground)" }}>
@@ -219,7 +216,7 @@ export default function Home() {
           </div>
           {/* CTO */}
           <div className="flex flex-col items-center text-center max-w-xs bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 shadow-md workflow-glow">
-            <img src="/public/cto.jpg" alt="CTO" className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
+            <Image src="/public/cto.jpg" alt="CTO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
             <h4 className="text-xl font-semibold mb-1" style={{ color: "var(--foreground)" }}>Emmanuel Sonkori</h4>
             <span className="text-sm mb-2" style={{ color: "var(--muted-foreground)" }}>Chief Technology Officer</span>
             <p className="text-sm mb-3" style={{ color: "var(--muted-foreground)" }}>
@@ -233,7 +230,7 @@ export default function Home() {
           </div>
           {/* CMO */}
           <div className="flex flex-col items-center text-center max-w-xs bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 shadow-md workflow-glow">
-            <img src="/public/cmo.jpg" alt="CMO" className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
+            <Image src="/public/cmo.jpg" alt="CMO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
             <h4 className="text-xl font-semibold mb-1" style={{ color: "var(--foreground)" }}>George Mburu</h4>
             <span className="text-sm mb-2" style={{ color: "var(--muted-foreground)" }}>Chief Marketing Officer</span>
             <p className="text-sm mb-3" style={{ color: "var(--muted-foreground)" }}>

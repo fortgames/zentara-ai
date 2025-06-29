@@ -55,7 +55,7 @@ export default function ContactUs() {
             </Button>
           </form>
           <div className="text-center mt-4 text-sm" style={{ color: "var(--muted-foreground)" }}>
-            We'll get back to you as soon as possible.
+            We&apos;ll get back to you as soon as possible.
           </div>
         </div>
       </main>

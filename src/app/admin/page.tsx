@@ -5,7 +5,7 @@ import { createClient } from "../backend/lib/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 export default function AdminDashboard() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const supabase = createClient();
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function AdminDashboard() {
       if (error || !data.user || data.user.email !== "softwaresfortress@gmail.com") {
         router.push("/");
       } else {
-        setUser(data.user);
+        setUser({ id: data.user.id, email: data.user.email ?? "" });
       }
       setLoading(false);
     }

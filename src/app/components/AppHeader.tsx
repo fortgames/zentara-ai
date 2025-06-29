@@ -2,6 +2,7 @@
 import { useTheme } from "../theme-provider";
 import { Button } from "@nextui-org/react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { createClient } from "../backend/lib/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
@@ -16,7 +17,8 @@ function ThemeToggle() {
 
 export default function AppHeader() {
   const [scrolled, setScrolled] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  type User = { id: string; email: string };
+  const [user, setUser] = useState<User | null>(null);
   const supabase = createClient();
   const router = useRouter();
 
@@ -26,7 +28,11 @@ export default function AppHeader() {
 
     async function getUser() {
       const { data } = await supabase.auth.getUser();
-      setUser(data.user);
+      if (data.user) {
+        setUser({ id: data.user.id, email: data.user.email ?? "" });
+      } else {
+        setUser(null);
+      }
     }
     getUser();
 
@@ -46,9 +52,9 @@ export default function AppHeader() {
       `}
       style={{ background: scrolled ? undefined : "var(--card)", color: "var(--card-foreground)" }}
     >
-      <a href="/" className="text-2xl font-bold tracking-tight" style={{ color: "var(--primary)", textDecoration: "none" }}>zentara</a>
+      <Link href="/" className="text-2xl font-bold tracking-tight" style={{ color: "var(--primary)", textDecoration: "none" }}>zentara</Link>
       <div className="flex gap-4 items-center">
-        <a href="/contact" className="text-sm hover:underline" style={{ color: "var(--foreground)" }}>Contact sales</a>
+        <Link href="/contact" className="text-sm hover:underline" style={{ color: "var(--foreground)" }}>Contact sales</Link>
         {user ? (
           <Button onClick={handleSignOut} color="primary" className="font-semibold">Sign Out</Button>
         ) : (

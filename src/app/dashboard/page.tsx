@@ -5,7 +5,7 @@ import { createClient } from "../backend/lib/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 export default function UserDashboard() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const supabase = createClient();
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function UserDashboard() {
       if (error || !data.user) {
         router.push("/signin");
       } else {
-        setUser(data.user);
+        setUser({ id: data.user.id, email: data.user.email ?? "" });
       }
       setLoading(false);
     }

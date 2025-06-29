@@ -29,7 +29,7 @@ export default function SignUp() {
     const supabase = createClient();
     try {
       const redirectTo = `${window.location.origin}/auth/callback`;
-      const { data, error } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signUp({
         email,
         password,
         options: { emailRedirectTo: redirectTo }
@@ -43,9 +43,13 @@ export default function SignUp() {
         setTouched({ email: false, password: false, confirm: false });
         alert("successfully signed in");
       }
-    } catch (err: any) {
+    } catch (err) {
       setLoading(false);
-      setError(err.message || "An unexpected error occurred.");
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unexpected error occurred.");
+      }
     }
   }
 
