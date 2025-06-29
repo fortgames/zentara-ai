@@ -1,5 +1,7 @@
 {
-  "install": "npm install --omit=dev",
-  "build": "npm run build",
-  "start": "npm run start"
+  "build": {
+    "install": "npm install --omit=dev",
+    "build": "npm run build",
+    "start": "npm run start"
+  }
 }
