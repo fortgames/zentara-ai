@@ -5,22 +5,110 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html.light {
+  --background: #ffffff;
+  --foreground: #18181b; /* darker for better contrast */
+  --primary: #ff7e1b;
+  --primary-foreground: #fff;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #18181b;
+  --accent: #fbbf24;
+  --accent-foreground: #18181b;
+  --border: #e5e7eb;
+  --muted: #f9fafb;
+  --muted-foreground: #6b7280;
+  --card: #fff;
+  --card-foreground: #18181b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary: #ff7e1b;
+  --primary-foreground: #fff;
+  --secondary: #23272f;
+  --secondary-foreground: #ededed;
+  --accent: #fbbf24;
+  --accent-foreground: #23272f;
+  --border: #23272f;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --card: #18181b;
+  --card-foreground: #ededed;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Add glassmorphism and animation helpers */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out;
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradientX 3s ease-in-out infinite;
+}
+
+@keyframes textFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes textSlideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.text-fade-in {
+  animation: textFadeIn 1s ease-out;
+}
+.text-slide-up {
+  animation: textSlideUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* HeroUI-inspired hover animation utilities */
+.hover-animate-scale {
+  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.hover-animate-scale:hover {
+  transform: scale(1.04) translateY(-2px);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10);
+}
+
+.button-hero-hover {
+  transition: background 0.2s cubic-bezier(0.4,0,0.2,1), color 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.button-hero-hover:hover {
+  background: var(--secondary) !important;
+  color: var(--primary) !important;
+}
+
+.container-hero-hover {
+  transition: color 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.container-hero-hover:hover {
+  color: var(--primary);
+}
+
+.workflow-glow {
+  transition: box-shadow 0.3s cubic-bezier(0.4,0,0.2,0.6);
+}
+html.dark .workflow-glow {
+  /* Reduce brightness by 50%: use a darker shadow color and less opacity */
+  box-shadow: 0 0 32px 0 #5a5a5a80, 0 2px 8px 0 rgba(0,0,0,0.06);
+}
+html.light .workflow-glow {
+  box-shadow: 0 0 32px 0 #d1d5db, 0 2px 8px 0 rgba(0,0,0,0.08);
+}
+/* Glassmorphism effect */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
