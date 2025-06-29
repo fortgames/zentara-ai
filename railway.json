@@ -1,7 +1,11 @@
 {
-  "build": {
-    "install": "npm install --omit=dev",
-    "build": "npm run build",
-    "start": "npm run start"
+  "services": {
+    "web": {
+      "build": {
+        "install": "npm install --omit=dev",
+        "build": "npm run build",
+        "start": "npm run start"
+      }
+    }
   }
 }
