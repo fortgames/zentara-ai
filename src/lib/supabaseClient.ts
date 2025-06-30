@@ -8,8 +8,8 @@ export const getSupabaseClient = () => {
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!url || !key) {
-    console.warn('Supabase env vars are missing!')
-    return null
+    console.error('[Supabase] Missing env vars:', { url, key });
+    throw new Error('[Supabase] NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is missing!');
   }
 
   return createBrowserClient(url, key)

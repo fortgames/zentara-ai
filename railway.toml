@@ -8,5 +8,5 @@ command = "npm run build"
 command = "npm run start"
 
 [env]
-NEXT_PUBLIC_SUPABASE_URL = "https://shyowajrvowuxhokqjzy.supabase.co"
-NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNoeW93YWpydm93dXhob2txanp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NjE5MTEsImV4cCI6MjA2NjQzNzkxMX0.I4vzFdAqmsJjlK_xHrkAHuVhLuO5Z_TC5a1HhyJELsI"
+NEXT_PUBLIC_SUPABASE_URL = https://shyowajrvowuxhokqjzy.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNoeW93YWpydm93dXhob2txanp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4NjE5MTEsImV4cCI6MjA2NjQzNzkxMX0.I4vzFdAqmsJjlK_xHrkAHuVhLuO5Z_TC5a1HhyJELsI

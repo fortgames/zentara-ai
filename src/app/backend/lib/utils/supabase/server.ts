@@ -4,7 +4,11 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 
 export async function createClient(): Promise<SupabaseClient> {
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-        throw new Error('Supabase URL and/or Anon Key are not defined in environment variables');
+        console.error('[Supabase] Missing env vars:', {
+          url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+          key: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+        });
+        throw new Error('[Supabase] NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is missing!');
     }
 
     const cookieStore = await cookies()
