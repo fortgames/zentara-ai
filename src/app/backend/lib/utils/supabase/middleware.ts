@@ -13,42 +13,27 @@ export async function updateSession(request: NextRequest) {
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         {
             cookies: {
-                get(name: string) {
-                    return request.cookies.get(name)?.value
+                getAll() {
+                    // Return all cookies as an array of { name, value }
+                    return request.cookies.getAll().map(cookie => ({
+                        name: cookie.name,
+                        value: cookie.value,
+                    }));
                 },
-                set(name: string, value: string, options: CookieOptions) {
-                    request.cookies.set({
-                        name,
-                        value,
-                        ...options,
-                    })
+                setAll(cookies: { name: string; value: string; options?: CookieOptions }[]) {
+                    // Set all cookies on the response
                     response = NextResponse.next({
                         request: {
                             headers: request.headers,
                         },
-                    })
-                    response.cookies.set({
-                        name,
-                        value,
-                        ...options,
-                    })
-                },
-                remove(name: string, options: CookieOptions) {
-                    request.cookies.set({
-                        name,
-                        value: "",
-                        ...options,
-                    })
-                    response = NextResponse.next({
-                        request: {
-                            headers: request.headers,
-                        },
-                    })
-                    response.cookies.set({
-                        name,
-                        value: "",
-                        ...options,
-                    })
+                    });
+                    for (const cookie of cookies) {
+                        response.cookies.set({
+                            name: cookie.name,
+                            value: cookie.value,
+                            ...cookie.options,
+                        });
+                    }
                 },
             }
         }
