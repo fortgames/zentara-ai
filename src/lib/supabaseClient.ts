@@ -1,12 +1,16 @@
+'use client' // Only if you're using this in client components
+
 import { createBrowserClient } from '@supabase/ssr'
 
+// Never initialize at the top level during import
 export const getSupabaseClient = () => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-  if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error('Supabase URL or Anon Key is missing in environment variables')
+  if (!url || !key) {
+    console.warn('Supabase env vars are missing!')
+    return null
   }
 
-  return createBrowserClient(supabaseUrl, supabaseAnonKey)
+  return createBrowserClient(url, key)
 }
