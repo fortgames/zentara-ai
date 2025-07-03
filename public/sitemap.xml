@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://zentara-ai-production.up.railway.app/</loc>
+  </url>
+  <url>
+    <loc>https://zentara-ai-production.up.railway.app/admin</loc>
+  </url>
+  <url>
+    <loc>https://zentara-ai-production.up.railway.app/dashboard</loc>
+  </url>
+  <url>
+    <loc>https://zentara-ai-production.up.railway.app/contact</loc>
+  </url>
+  <url>
+    <loc>https://zentara-ai-production.up.railway.app/signin</loc>
+  </url>
+  <url>
+    <loc>https://zentara-ai-production.up.railway.app/signup</loc>
+  </url>
+</urlset>
