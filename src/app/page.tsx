@@ -202,7 +202,7 @@ export default function Home() {
         <div className="flex flex-wrap justify-center gap-10">
           {/* CEO */}
           <div className="flex flex-col items-center text-center max-w-xs bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 shadow-md workflow-glow">
-            <Image src="/public/ceo.jpg" alt="CEO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
+            <Image src="/ceo.jpg" alt="CEO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
             <h4 className="text-xl font-semibold mb-1" style={{ color: "var(--foreground)" }}>Seth Situma</h4>
             <span className="text-sm mb-2" style={{ color: "var(--muted-foreground)" }}>Chief Executive Officer</span>
             <p className="text-sm mb-3" style={{ color: "var(--muted-foreground)" }}>
@@ -216,7 +216,7 @@ export default function Home() {
           </div>
           {/* CTO */}
           <div className="flex flex-col items-center text-center max-w-xs bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 shadow-md workflow-glow">
-            <Image src="/public/cto.jpg" alt="CTO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
+            <Image src="/manu.jpg" alt="CTO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
             <h4 className="text-xl font-semibold mb-1" style={{ color: "var(--foreground)" }}>Emmanuel Sonkori</h4>
             <span className="text-sm mb-2" style={{ color: "var(--muted-foreground)" }}>Chief Technology Officer</span>
             <p className="text-sm mb-3" style={{ color: "var(--muted-foreground)" }}>
@@ -230,7 +230,7 @@ export default function Home() {
           </div>
           {/* CMO */}
           <div className="flex flex-col items-center text-center max-w-xs bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 shadow-md workflow-glow">
-            <Image src="/public/cmo.jpg" alt="CMO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
+            <Image src="/img-20220922-wa0009~2.jpg" alt="CMO" width={112} height={112} className="w-28 h-28 rounded-full mb-4 object-cover border-4 border-[var(--primary)]" />
             <h4 className="text-xl font-semibold mb-1" style={{ color: "var(--foreground)" }}>George Mburu</h4>
             <span className="text-sm mb-2" style={{ color: "var(--muted-foreground)" }}>Chief Marketing Officer</span>
             <p className="text-sm mb-3" style={{ color: "var(--muted-foreground)" }}>
